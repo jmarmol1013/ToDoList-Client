@@ -14,13 +14,21 @@ export function AuthProvider({children}){
     const userInfo = useRef();
 
     const singnup = (email,password) => {
-        createUserWithEmailAndPassword(auth,email,password);
-        return
+        try{
+            const signupResult = createUserWithEmailAndPassword(auth,email,password);
+            return signupResult
+        } catch (error) {
+            throw new Error('Could not login. Verify your email and password.');
+          }
     }
 
     const login = (email,password) => {
-        signInWithEmailAndPassword(auth,email,password);
-        return 
+        try{
+            const signinResult = signInWithEmailAndPassword(auth,email,password);
+            return signinResult
+        } catch (error) {
+            throw new Error('Could not login. Verify your email and password.');
+          }
     }
 
     const logout = () =>{
