@@ -1,6 +1,24 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { useAuth } from '../../context/AuthContext'
 
 export default function Home() {
+  const {currentUser} = useAuth();
+  const router = useRouter();
+
+  console.log(currentUser);
+
+  useEffect(()=> {
+    if(!currentUser){
+      router.push('/LogIn')
+    }
+  
+    if(currentUser){ 
+      router.push('/Dashboard') 
+    }
+  })
+
   return (
     <>
       <Head>
@@ -10,7 +28,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1 className=' text-center'>Welcome to ToDoList</h1>
       </main>
     </>
   )
