@@ -13,7 +13,7 @@ export function AuthProvider({children}){
     const [loading,setLoading] = useState(true);
     const userInfo = useRef();
 
-    const singnup = (email,password) => {
+    const singnup = async (email,password) => {
         try{
             const signupResult = createUserWithEmailAndPassword(auth,email,password);
             return signupResult

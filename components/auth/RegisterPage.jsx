@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react'
 import { useAuth } from '../../context/AuthContext';
+import { postWithCredentials } from '../../data/postWithCredentials';
 
 const RegisterPage = () => {
   const [firstName,setFirstName] = useState('');
-  const [lastName,setLastName] = useState();
+  const [lastName,setLastName] = useState('');
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
   const [signInError,setSignInError] = useState('');
@@ -22,13 +23,20 @@ const RegisterPage = () => {
 
       try{
           setSignInError('');
-          await singnup(email,password);
-          router.push('/Dashboard');
+          const userCredentials = await singnup(email,password);
+          const user = userCredentials.user;
+          await createMongoUser(user);
       } catch (e) {
           setSignInError('Could not register. Verify your email and password.');
       }
-
   } 
+
+  const createMongoUser = async(user) => {
+    const fullName = firstName + ' ' + lastName;
+        
+    await postWithCredentials('http://localhost:8080/users',{email:email,fullName:fullName},user);
+    router.push('/Dashboard');
+  }
 
   return (
   <>
