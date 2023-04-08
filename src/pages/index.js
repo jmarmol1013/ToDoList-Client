@@ -7,8 +7,6 @@ export default function Home() {
   const {currentUser} = useAuth();
   const router = useRouter();
 
-  console.log(currentUser);
-
   useEffect(()=> {
     if(!currentUser){
       router.push('/LogIn')
