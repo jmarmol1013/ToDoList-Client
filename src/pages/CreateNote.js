@@ -2,11 +2,11 @@ import Head from 'next/head'
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react'
 import Nav from '../../components/Dashboard/Nav'
-import NotesSection from '../../components/Dashboard/NotesSection';
-import TotalNotes from '../../components/Dashboard/TotalNotes';
+import CreateNewNoteForm from '../../components/NewNote/CreateNewNoteForm';
+import BackButton from '../../components/ui/BackButton';
 import { useAuth } from '../../context/AuthContext';
 
-const Dashboard = () => {
+const CreateNote = () => {
   const {currentUser} = useAuth();
   const router = useRouter();
 
@@ -16,7 +16,7 @@ const Dashboard = () => {
     }
   
     if(currentUser){ 
-      router.push('/Dashboard') 
+      router.push('/CreateNote') 
     }
   },[currentUser]);
 
@@ -30,10 +30,11 @@ const Dashboard = () => {
       </Head>
       <main className='bg-[#EBF0FF]'>
         <Nav/>
-        <NotesSection />
+        <BackButton />
+        <CreateNewNoteForm/>
       </main>
     </>
   )
 }
 
-export default Dashboard
+export default CreateNote

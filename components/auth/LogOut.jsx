@@ -9,14 +9,15 @@ const LogOut = () => {
   const logOut = async () => {
     try{
       await logout();
-      router.push('/');
+      router.push('/Login');
     }catch(e){
       console.log(e);
     }
   }
+  
   return (
     <button onClick={logOut} className=' text-white text-lg' >
-        LogOut
+        Log Out
     </button>
   )
 }
