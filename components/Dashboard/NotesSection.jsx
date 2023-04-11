@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useAuth } from '../../context/AuthContext';
 import NavNotesSection from './NavNotesSection'
 import NotesList from './NotesList';
 import TotalNotes from './TotalNotes';
@@ -6,11 +7,50 @@ import useNotes from './useNotes';
 
 
 const NotesSection = () => {
-  const {isLoading,notes} = useNotes();
+  const {currentUser} = useAuth();
+  const {isLoading,notes,setNotes} = useNotes();
   const [notesList,setNotesList] = useState('toDo');
   const notesListToDo = (() => setNotesList('toDo'));
   const noteListDoing = (() => setNotesList('doing'));
   const noteListDone = (() => setNotesList('done'));
+
+  const deleteNote = async (id) => {
+    const response = await fetch(`http://localhost:8080/delete/notes/${id}`,{
+      method:'delete',
+      headers:{
+        AuthToken: await currentUser.getIdToken(),
+      },
+    });
+
+    const updatedNotes = await response.json();
+    setNotes(updatedNotes);
+  }
+
+  const updatedNoteDoing = async (id) => {
+    const response = await fetch(`http://localhost:8080/notes/doing/${id}`,{
+      method:'put',
+      headers:{
+        AuthToken:await currentUser.getIdToken(),
+      },
+    });
+
+    const updatedNotes = await response.json();
+    setNotes(updatedNotes);
+    setNotesList('doing');
+  }
+
+  const updatedNoteDone = async (id) => {
+    const response = await fetch(`http://localhost:8080/notes/done/${id}`,{
+      method:'put',
+      headers:{
+        AuthToken:await currentUser.getIdToken(),
+      },
+    });
+
+    const updatedNotes = await response.json();
+    setNotes(updatedNotes);
+    setNotesList('done');
+  }
 
   return (
     <>
@@ -29,6 +69,9 @@ const NotesSection = () => {
             notes={notes}
             notesList={notesList}
             isLoading={isLoading}
+            updatedNoteDoing={updatedNoteDoing}
+            updatedNoteDone={updatedNoteDone}
+            deleteNote={deleteNote}
           />
         </div>
       </div>

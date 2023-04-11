@@ -9,6 +9,12 @@ const TotalNotes = ({notes}) => {
     let countToDo = 0;
     let countDoing = 0;
     let countDone = 0;
+    
+    if(Object.keys(notes).length === 0){
+      setToDoCounter(0)
+      setDoingCounter(0);
+      setDoneCounter(0);
+    }
 
     notes.map((note)=>{
       if(note.noteList === 'toDo'){

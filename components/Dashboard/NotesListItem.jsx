@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {MdCancel} from 'react-icons/md'
 
-const NotesListItem = ({note,noteList}) => {
+const NotesListItem = ({note,noteList,deleteNote,updatedNoteDoing,updatedNoteDone}) => {
+  const [confirmDelete,setConfirmDelete] = useState(false);
+
   const colorsType = {
     study: "text-[#64BB2F]",
     life: "text-[#2F5EBB]",
@@ -20,14 +23,32 @@ const NotesListItem = ({note,noteList}) => {
         <div className='justify-end'>
             {
                 noteList === 'toDo' ?
-                <button className='border-2 text-sm rounded-md border-[#7054DE] p-2 mx-2 hover:text-white hover:bg-[#7054DE]'>Doing</button>
+                <button 
+                  className='border-2 text-sm rounded-md border-[#7054DE] p-2 mx-2 hover:text-white hover:bg-[#7054DE]'
+                  onClick={() => updatedNoteDoing(note._id)}>
+                  Doing
+                </button>
                 : noteList === 'doing' ?
-                <button className='border-2 text-sm rounded-md border-[#8F50D4] p-2 mx-2 hover:text-white hover:bg-[#8F50D4]'>Done</button>
+                <button 
+                  className='border-2 text-sm rounded-md border-[#8F50D4] p-2 mx-2 hover:text-white hover:bg-[#8F50D4]'
+                  onClick={() => updatedNoteDone(note._id)}>
+                  Done
+                </button>
                 :
                 null
             }
             <button className='border-2 text-sm rounded-md border-[#2853EE] p-2 mx-2 hover:text-white hover:bg-[#2853EE]'>Edit</button>
-            <button className='border-2 text-sm rounded-md border-red-600 p-2 mx-2 hover:text-white hover:bg-red-600'>Delete</button>
+            {
+              !confirmDelete ?
+                <button className='border-2 text-sm rounded-md border-red-600 p-2 mx-2 hover:text-white hover:bg-red-600' onClick={() => setConfirmDelete(true)}>Delete</button>
+              :
+                <button className='border-2 text-sm rounded-full border-red-600 mt-1 p-2 mx-2 text-white bg-red-600' onClick={() => {
+                deleteNote(note._id);
+                setConfirmDelete(false);
+                }}>
+                  <MdCancel />
+                </button>
+            }
         </div>
     </div>
   )

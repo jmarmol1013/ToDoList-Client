@@ -1,7 +1,7 @@
 import React from 'react'
 import NotesListItem from './NotesListItem'
 
-const NotesList = ({notes,notesList,isLoading}) => {
+const NotesList = ({notes,notesList,isLoading,deleteNote,updatedNoteDoing,updatedNoteDone}) => {
   return (
     <div className={`divide-y-2 
                     ${notesList === 'toDo' ? 'divide-[#5482DE]' : notesList === 'doing' ? 'divide-[#7054DE]' : notesList === 'done' ? 'divide-[#8F50D4]' : null}`}>
@@ -17,12 +17,15 @@ const NotesList = ({notes,notesList,isLoading}) => {
                             key={index}
                             note={note}
                             noteList={notesList}
+                            deleteNote={deleteNote}
+                            updatedNoteDoing={updatedNoteDoing}
+                            updatedNoteDone={updatedNoteDone}
                         />
                     );
                 };
             })
           :
-          <p className='text-center mt-4'>No notes, create your first note...</p>
+          <p className='text-center my-4'>No notes, create your first note...</p>
         }       
     </div>
   )
