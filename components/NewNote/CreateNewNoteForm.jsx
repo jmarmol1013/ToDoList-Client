@@ -13,13 +13,13 @@ const CreateNewNoteForm = () => {
 
 
   const createNote = async () => {
-    if (!note || !noteType) {
+    if (note == '' || noteType == '') {
         setErrorMessage('Please insert a note and select a note type');
+    }else{
+        setErrorMessage('');
+        await postWithCredentials('http://localhost:8080/createNote',{note:note,noteType:noteType},currentUser);
+        router.push('Dashboard');
     }
-
-    setErrorMessage('');
-    await postWithCredentials('http://localhost:8080/createNote',{note:note,noteType:noteType},currentUser);
-    router.push('Dashboard');
   }
 
   const options = [
