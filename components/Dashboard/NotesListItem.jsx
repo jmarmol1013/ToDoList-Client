@@ -1,8 +1,10 @@
+import { useRouter } from 'next/router';
 import React, { useState } from 'react'
 import {MdCancel} from 'react-icons/md'
 
 const NotesListItem = ({note,noteList,deleteNote,updatedNoteDoing,updatedNoteDone}) => {
   const [confirmDelete,setConfirmDelete] = useState(false);
+  const router = useRouter();
 
   const colorsType = {
     study: "text-[#64BB2F]",
@@ -13,6 +15,10 @@ const NotesListItem = ({note,noteList,deleteNote,updatedNoteDoing,updatedNoteDon
     other: "text-[#BB722F]"
   }; 
   const colorType = colorsType[note.typeNote.toLowerCase()];
+
+  const editNote = (noteId) => {
+    router.push(`EditNote/${noteId}`);
+  }
 
   return (
     <div className='flex p-2 justify-between align-middle items-center'>
@@ -37,7 +43,11 @@ const NotesListItem = ({note,noteList,deleteNote,updatedNoteDoing,updatedNoteDon
                 :
                 null
             }
-            <button className='border-2 text-sm rounded-md border-[#2853EE] p-2 mx-2 hover:text-white hover:bg-[#2853EE]'>Edit</button>
+            <button 
+              className='border-2 text-sm rounded-md border-[#2853EE] p-2 mx-2 hover:text-white hover:bg-[#2853EE]' 
+              onClick={() => editNote(note._id)}>
+              Edit
+            </button>
             {
               !confirmDelete ?
                 <button className='border-2 text-sm rounded-md border-red-600 p-2 mx-2 hover:text-white hover:bg-red-600' onClick={() => setConfirmDelete(true)}>Delete</button>
