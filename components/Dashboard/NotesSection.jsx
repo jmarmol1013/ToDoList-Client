@@ -31,6 +31,7 @@ const NotesSection = () => {
       method:'put',
       headers:{
         AuthToken:await currentUser.getIdToken(),
+        "Content-Type": "application/json",
       },
     });
 
@@ -44,6 +45,7 @@ const NotesSection = () => {
       method:'put',
       headers:{
         AuthToken:await currentUser.getIdToken(),
+        "Content-Type": "application/json",
       },
     });
 
