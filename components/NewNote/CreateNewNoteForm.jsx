@@ -18,7 +18,7 @@ const CreateNewNoteForm = () => {
     }else{
         setErrorMessage('');
         await postWithCredentials('http://localhost:8080/createNote',{note:note,noteType:noteType},currentUser);
-        router.push('Dashboard');
+        router.push('/Dashboard');
     }
   }
 
