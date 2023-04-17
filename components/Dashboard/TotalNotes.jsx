@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const TotalNotes = ({notes}) => {
+const TotalNotes = ({notes,filter}) => {
   const [toDoCounter,setToDoCounter] = useState(0);
   const [doingCounter,setDoingCounter] = useState(0);
   const [doneCounter,setDoneCounter] = useState(0);
@@ -16,24 +16,44 @@ const TotalNotes = ({notes}) => {
       setDoneCounter(0);
     }
 
-    notes.map((note)=>{
-      if(note.noteList === 'toDo'){
+    if(filter == 'None'){
+      notes.map((note)=>{
+        if(note.noteList === 'toDo'){
+          countToDo++;
+        } 
+  
+        if(note.noteList === 'doing'){
+          countDoing++;
+        }
+  
+        if(note.noteList === 'done'){
+          countDone++;
+        }
+
+        setToDoCounter(countToDo);
+        setDoingCounter(countDoing);
+        setDoneCounter(countDone);
+      });
+    }
+
+    notes.map((note)=> {
+      if(note.noteList === 'toDo' && note.typeNote === filter){
         countToDo++;
       } 
 
-      if(note.noteList === 'doing'){
+      if(note.noteList === 'doing' && note.typeNote === filter){
         countDoing++;
       }
 
-      if(note.noteList === 'done'){
+      if(note.noteList === 'done' && note.typeNote === filter){
         countDone++;
       }
-
       setToDoCounter(countToDo)
       setDoingCounter(countDoing);
       setDoneCounter(countDone);
     });
-  })
+
+  },[notes,filter])
   
   
   return (

@@ -13,6 +13,17 @@ const NotesSection = () => {
   const notesListToDo = (() => setNotesList('toDo'));
   const noteListDoing = (() => setNotesList('doing'));
   const noteListDone = (() => setNotesList('done'));
+  const [filter,setFilter] = useState('None');
+  
+  const typeNotes = [
+    'Study',
+    'Life',
+    'Daily',
+    'Sports',
+    'Work',
+    'Other',
+    'None'
+  ]
 
   const deleteNote = async (id) => {
     const response = await fetch(`http://localhost:8080/delete/notes/${id}`,{
@@ -54,10 +65,15 @@ const NotesSection = () => {
     setNotesList('done');
   }
 
+  const filterData = filter => {
+    setFilter(filter);
+  }
+
   return (
     <>
       <TotalNotes 
         notes={notes}
+        filter={filter}
       />
       <div className='flex justify-center mt-6 '>
         <div className='bg-white rounded-md w-[60%]'>
@@ -66,6 +82,8 @@ const NotesSection = () => {
             noteListToDo={notesListToDo}
             noteListDoing={noteListDoing}
             noteListDone={noteListDone}
+            filterData={filterData}
+            typeNotes={typeNotes}
           />
           <NotesList 
             notes={notes}
@@ -74,6 +92,7 @@ const NotesSection = () => {
             updatedNoteDoing={updatedNoteDoing}
             updatedNoteDone={updatedNoteDone}
             deleteNote={deleteNote}
+            filter={filter}
           />
         </div>
       </div>

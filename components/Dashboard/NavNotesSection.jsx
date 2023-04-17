@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
-import {FiArrowDown} from 'react-icons/fi'
+import React from 'react'
+import Filter from './Filter'
 
-const NavNotesSection = ({notesList,noteListToDo,noteListDoing,noteListDone}) => {
+const NavNotesSection = ({notesList,noteListToDo,noteListDoing,noteListDone,filterData,typeNotes}) => {
   return (
     <div className={`bg-[#F0F0F0] border-b-4 flex w-full justify-between
     ${notesList === 'toDo' ? 'border-[#5482DE]' : notesList === 'doing' ? 'border-[#7054DE]' : notesList === 'done' ? 'border-[#8F50D4]':'border-white'}`}>
@@ -21,10 +21,10 @@ const NavNotesSection = ({notesList,noteListToDo,noteListDoing,noteListDone}) =>
         >Done</button>
       </div>
       <div className='justify-end p-2 flex'>
-        <div className='flex items-center p-3 border-2 rounded-md border-[#509ED4] text-[#509ED4] hover:text-white hover:bg-[#509ED4] mx-4 hover:cursor-pointer'>
-          <span className='pr-2'>Filter</span>
-          <FiArrowDown/>
-        </div>
+        <Filter 
+          filterData={filterData}
+          typeNotes={typeNotes}
+        />
         {
           notesList === 'toDo' ?
           <Link href='/CreateNote'>
