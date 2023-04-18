@@ -109,7 +109,7 @@ const RegisterPage = () => {
           </div>
           <div className='w-1/2 mr-[20%] bg-gradient-to-b from-[#4F56C6] to-[#C9CFEC] rounded-r-md lg:block hidden'>
               <div className='m-8 bg-[#CFD3EA]'>
-                  <h1 className='text-white text-4xl leading-snug p-8'>Take your notes to <br></br> another level with <br></br><span className='text-black'>ToDoList</span></h1>
+                  <h1 className='text-white text-4xl leading-snug p-8'>Take your notes to <br></br> another level with <br></br><span className='text-black'>Listify</span></h1>
                   <h2 className='text-white text-xl py-7 px-8'>Simple and intuitive tool to help you stay organized and on top of your tasks. With our app, you can easily create and manage your to-do list, set reminders, and prioritize your tasks.</h2>
               </div>
           </div>
