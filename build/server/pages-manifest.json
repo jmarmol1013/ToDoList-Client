@@ -1,0 +1,12 @@
+{
+  "/_app": "pages/_app.js",
+  "/_document": "pages/_document.js",
+  "/EditNote/[id]": "pages/EditNote/[id].html",
+  "/Dashboard": "pages/Dashboard.html",
+  "/CreateNote": "pages/CreateNote.html",
+  "/LogIn": "pages/LogIn.html",
+  "/Register": "pages/Register.html",
+  "/": "pages/index.html",
+  "/_error": "pages/_error.js",
+  "/404": "pages/404.html"
+}
