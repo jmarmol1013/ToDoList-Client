@@ -14,7 +14,7 @@ const Nav = () => {
         return;
     }
 
-    const response = await fetch(`http://localhost:8080/user/${currentUser.uid}/name`,{
+    const response = await fetch(`https://listify-api.onrender.com/user/${currentUser.uid}/name`,{
         headers:{
             AuthToken:await currentUser.getIdToken(),
         },

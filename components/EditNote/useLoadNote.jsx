@@ -7,7 +7,7 @@ const useLoadNote = (noteId) => {
 
   useEffect(() => {
     const loadNote = async() => {
-        const response = await fetch(`http://localhost:8080/notes/editNote/${noteId}`,{
+        const response = await fetch(`https://listify-api.onrender.com/notes/editNote/${noteId}`,{
             headers:{
                 AuthToken:await currentUser.getIdToken(),
             }});

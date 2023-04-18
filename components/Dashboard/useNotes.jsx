@@ -14,7 +14,7 @@ const useNotes = () => {
                 return;
             }
 
-            const response = await fetch(`http://localhost:8080/user/${currentUser.uid}/notes`,{
+            const response = await fetch(`https://listify-api.onrender.com/user/${currentUser.uid}/notes`,{
                 headers:{
                     AuthToken:await currentUser.getIdToken(),
                 },

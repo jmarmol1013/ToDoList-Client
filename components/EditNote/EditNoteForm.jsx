@@ -21,7 +21,7 @@ const EditNoteForm = (prevNoteObject) => {
           setErrorMessage('Please insert a note and select a note type');
       }else{
           setErrorMessage('');
-          await fetch(`http://localhost:8080/editNote/${prevNote._id}`,{
+          await fetch(`https://listify-api.onrender.com/editNote/${prevNote._id}`,{
             method: "PUT",
             headers: {
                 AuthToken: await currentUser.getIdToken(),

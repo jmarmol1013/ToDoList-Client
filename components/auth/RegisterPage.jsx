@@ -34,7 +34,7 @@ const RegisterPage = () => {
   const createMongoUser = async(user) => {
     const fullName = firstName + ' ' + lastName;
         
-    await postWithCredentials('http://localhost:8080/users',{email:email,fullName:fullName},user);
+    await postWithCredentials('https://listify-api.onrender.com/users',{email:email,fullName:fullName},user);
     router.push('/Dashboard');
   }
 

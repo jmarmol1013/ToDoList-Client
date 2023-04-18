@@ -26,7 +26,7 @@ const NotesSection = () => {
   ]
 
   const deleteNote = async (id) => {
-    const response = await fetch(`http://localhost:8080/delete/notes/${id}`,{
+    const response = await fetch(`https://listify-api.onrender.com/delete/notes/${id}`,{
       method:'delete',
       headers:{
         AuthToken: await currentUser.getIdToken(),
@@ -38,7 +38,7 @@ const NotesSection = () => {
   }
 
   const updatedNoteDoing = async (id) => {
-    const response = await fetch(`http://localhost:8080/notes/doing/${id}`,{
+    const response = await fetch(`https://listify-api.onrender.com/notes/doing/${id}`,{
       method:'put',
       headers:{
         AuthToken:await currentUser.getIdToken(),
@@ -52,7 +52,7 @@ const NotesSection = () => {
   }
 
   const updatedNoteDone = async (id) => {
-    const response = await fetch(`http://localhost:8080/notes/done/${id}`,{
+    const response = await fetch(`https://listify-api.onrender.com/notes/done/${id}`,{
       method:'put',
       headers:{
         AuthToken:await currentUser.getIdToken(),

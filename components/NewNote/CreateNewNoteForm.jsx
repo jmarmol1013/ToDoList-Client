@@ -17,7 +17,7 @@ const CreateNewNoteForm = () => {
         setErrorMessage('Please insert a note and select a note type');
     }else{
         setErrorMessage('');
-        await postWithCredentials('http://localhost:8080/createNote',{note:note,noteType:noteType},currentUser);
+        await postWithCredentials('https://listify-api.onrender.com/createNote',{note:note,noteType:noteType},currentUser);
         router.push('/Dashboard');
     }
   }
