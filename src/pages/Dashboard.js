@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react'
-import Nav from '../../components/Dashboard/Nav'
 import NotesSection from '../../components/Dashboard/NotesSection';
-import TotalNotes from '../../components/Dashboard/TotalNotes';
+import Footer from '../../components/layout/Footer';
+import Nav from '../../components/layout/Nav';
 import { useAuth } from '../../context/AuthContext';
 
 const Dashboard = () => {
@@ -28,9 +28,10 @@ const Dashboard = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='bg-[#EBF0FF]'>
+      <main>
         <Nav/>
         <NotesSection />
+        <Footer/>
       </main>
     </>
   )

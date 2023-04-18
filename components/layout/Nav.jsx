@@ -27,7 +27,7 @@ const Nav = () => {
     }
 
     loadUserName();
-  },[currentUser])
+  },[userName])
   
   return (
     <div className='flex justify-between items-center bg-[#555CC7] text-white'>

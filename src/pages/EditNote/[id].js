@@ -2,10 +2,11 @@ import Head from 'next/head'
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react'
 import EditNoteForm from '../../../components/EditNote/EditNoteForm';
-import Nav from '../../../components/Dashboard/Nav'
+import Nav from '../../../components/layout/Nav'
 import BackButton from '../../../components/ui/BackButton';
 import { useAuth } from '../../../context/AuthContext';
 import useLoadNote from '../../../components/EditNote/useLoadNote';
+import Footer from '../../../components/layout/Footer';
 
 const EditNote = () => {
     const {currentUser} = useAuth();
@@ -37,6 +38,7 @@ const EditNote = () => {
           <EditNoteForm 
             prevNote={prevNote}
           />
+          <Footer/>
         </main>
       </>
     )

@@ -1,5 +1,6 @@
 import '@/styles/globals.css'
-import { AuthProvider } from '../../context/AuthContext'
+import Nav from '../../components/layout/Nav';
+import { AuthProvider, useAuth } from '../../context/AuthContext'
 
 export default function App({ Component, pageProps }) {
   return (

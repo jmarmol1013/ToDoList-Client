@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react'
-import Nav from '../../components/Dashboard/Nav'
+import Footer from '../../components/layout/Footer';
+import Nav from '../../components/layout/Nav'
 import CreateNewNoteForm from '../../components/NewNote/CreateNewNoteForm';
 import BackButton from '../../components/ui/BackButton';
 import { useAuth } from '../../context/AuthContext';
@@ -32,6 +33,7 @@ const CreateNote = () => {
         <Nav/>
         <BackButton />
         <CreateNewNoteForm/>
+        <Footer/>
       </main>
     </>
   )
