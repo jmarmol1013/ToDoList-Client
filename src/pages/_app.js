@@ -1,13 +1,16 @@
 import '@/styles/globals.css'
-import Nav from '../../components/layout/Nav';
-import { AuthProvider, useAuth } from '../../context/AuthContext'
-
+import { AuthProvider } from '../../context/AuthContext'
+import { Analytics } from '@vercel/analytics/react';
+ 
 export default function App({ Component, pageProps }) {
   return (
-    <AuthProvider>
-      <div className="min-h-screen">
-        <Component {...pageProps} />
-      </div>
-    </AuthProvider> 
+    <>
+      <AuthProvider>
+        <div className="min-h-screen">
+          <Component {...pageProps} />
+        </div>
+      </AuthProvider>
+      <Analytics />
+    </>
   )
 }
